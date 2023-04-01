@@ -1,0 +1,12 @@
+venv
+*_pycache_
+*._pyc
+media
+env
+.env
+db.sqlite3
+gitflow.MD
+runserver.bat
+migrations.bat
+dumps
+dumps.bat

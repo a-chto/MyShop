@@ -1,0 +1,1 @@
+python manage.py dumpdata --exclude=auth --exclude=contenttypes > dumps/dump.json

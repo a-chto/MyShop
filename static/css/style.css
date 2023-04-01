@@ -1,0 +1,137 @@
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex-grow: 1;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1140px;
+    }
+} 
+
+@media (min-width: 1600px) {
+    .container {
+        width: 1440px;
+    }
+}
+
+.categories {
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(auto-fill, 240px);
+}
+
+.category {
+    width: 240px;
+    display: flex;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+    padding: 15px;
+    text-decoration: none;
+    align-items: center;
+}
+
+.category:hover {
+    transform: scale(1.04);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.05);
+}
+
+.category__img-wrapper {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    margin-right: 20px;
+}
+
+.category__img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+}
+
+.category__name {
+    color: #010101;
+    font-size: 1.25rem;
+}
+
+.products {
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(auto-fill, 240px);
+}
+
+.product {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.product__discount {
+    width: 30px;
+    height: 30px;
+    font-size: 0.875rem;
+    border-radius: 50%;
+    background-color: #bf1212;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.product__img-wrapper {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product__img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.product__name {
+    font-size: 1.25rem;
+    text-decoration: none;
+    margin-bottom: 10px;
+    color: #101010;
+}
