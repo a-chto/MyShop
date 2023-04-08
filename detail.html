@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+{% block content %}
+    <h1 class="page-title">{{ product.name }}</h1>
+    <div class="product-detail">
+        <div class="product-detail__gallery gallery">
+            <div class="gallery__current">
+                <img src="{{ product.product_images.first.image.url }}" alt="{{ product.name }}" class="gallery_image">
+            </div>
+            <div class="gallery__previews">
+                {% for image in product.product_images.all %}
+                    <div class="gallery__preview {% if forloop.counter == 1 %}gallery__preview_active{% endif %}">
+                        <img src="{{ image.image.url }}" alt="{{ product.name }}" class="gallery_image">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {{ product.price|price }}
+{% endblock %}
