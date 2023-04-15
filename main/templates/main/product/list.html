@@ -1,34 +1,31 @@
-{% extends 'base.html' %}
-{% load custom_filters %}
+{% extends "base.html" %}
 {% load static %}
-{% block title %}
-    {{ category }}
-{% endblock %}
+{% load custom_filters %}
+{% block title %}{{ category.name }}{% endblock %}
 {% block content %}
-<div class="products">
-    {% for product in products %}
-    <div class="products__item product">
-        {% if product.discount_percent > 0 %}
-            <div class="product__discount">
-                {{ product.discount_percent }}
-            </div>
-        {% endif %}
-        <div class="product__img-wrapper">
-            {% if product.product_images.all.count > 0 %}
-            <img class="product__img" src="{{ product.product_images.first.image.url }}" alt="{{ product.name }}">
-            {% else %}
-            <img class="product__img" src="{% static 'img/nophoto.png' %}" alt="Нет фото">
-            {% endif %}
-        </div>
-        <a href="{% url 'main:product-detail' slug=product.slug %}" class="product__name">{{ product.name }}</a>
-        <div class="product__price">
-            {% if product.discount_percent > 0 %}
-                {{ product.price_with_discount|price }}
-            {% else %}
-                {{ product.price|price }}
-            {% endif %}
-        </div>
+    <h1 class="page-title">{{ category.name }}</h1>
+    <div class="products">
+        {% for product in products %}
+            <a class="products__item product" href="{% url 'main:product-detail' slug=product.slug %}">
+                {% if product.discount_percent > 0 %}
+                    <div class="product__discount">
+                        -{{ product.discount_percent }}%
+                    </div>
+                {% endif %}
+                <div class="product__img-wrapper">
+                    <img
+                            class="product__img"
+                            src="{{ product.product_images.all.0.image.url }}"
+                            alt="{{ product.name }}"
+                    >
+                </div>
+                <div class="product__name">
+                    {{ product.name }}
+                </div>
+                <div class="product__price">
+                    {{ product.price|price }}
+                </div>
+            </a>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
 {% endblock %}

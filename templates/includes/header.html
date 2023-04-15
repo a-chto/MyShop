@@ -1,8 +1,30 @@
+{% load static %}
 <header class="header">
     <div class="container">
-        <form action="" class="search">
-            <input type="text" name="q">
-            <button class="btn btn_search">Поиск</button>
-        </form>
+        <div class="header__content">
+            <a href="/" class="header__logo" title="Главная">
+                <img src="{% static 'img/logo.png' %}" alt="Интернет магазин" class="header__logo-img">
+            </a>
+            <form action="" class="search">
+                <input type="text" class="search__input" placeholder="Имя товара">
+                <button type="submit" class="search__btn" title="Поиск">
+                    <img src="{% static 'img/search.svg' %}" alt="">
+                </button>
+            </form>
+            <nav class="nav">
+                <menu class="menu">
+                    <div class="menu__item">
+                        <a href="#" class="menu__link">Вход</a>
+                    </div>
+                    <div class="menu__item">
+                        <a href="{% url 'auth:register' %}" class="menu__link">Регистрация</a>
+                    </div>
+                </menu>
+            </nav>
+            <a href="#" class="header__cart" title="Корзина">
+                <img src="{% static 'img/cart.svg' %}" alt="" class="cart__icon">
+                <div class="cart__count">0</div>
+            </a>
+        </div>
     </div>
 </header>

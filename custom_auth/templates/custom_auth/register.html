@@ -1,0 +1,9 @@
+<form action="{% url 'auth:register' %}" method="post">
+    {% foe field in form %}]
+        <div class="form__item">
+          {{ field.label_tag }}
+          {{ field }}
+        </div>
+    {% endfor %}
+    <button type="submit">Зарегистрироваться</button>
+</form>
