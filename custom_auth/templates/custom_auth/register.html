@@ -1,9 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
 <form action="{% url 'auth:register' %}" method="post">
-    {% foe field in form %}]
+    {% csrf_token %}
+    {% if form.not_field_errors %}
+      <div class="form__errors">
+          {% for error in form.not_field_errors %}
+            {{error}}
+          {% endif %}
+      </div>
+    {% endif %}
+    {% for field in form %}
         <div class="form__item">
           {{ field.label_tag }}
           {{ field }}
         </div>
+        {% if field.errors %}
+        <div class="form__errors">
+            {% for error in field.errors %}
+              {{error}}
+            {% endif %}
+        </div>
+      {% endif %}
     {% endfor %}
     <button type="submit">Зарегистрироваться</button>
 </form>
+{% endblock %}
