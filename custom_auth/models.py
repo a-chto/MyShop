@@ -1,12 +1,27 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils import timezone
+from django.contrib.auth.models import UserManager
 
 
 from datetime import timedelta
 
 def get_future():
     return timezone.now() + timedelta(hours=72)
+
+
+class CustomUserManager(UserManager):
+    def create_superuser(self, email=None, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+        extra_fields.setdefault('is_active', True)
+
+        if extra_fields.get('is_staff') is not True:
+            raise ValueError('Superuser must have is_staff=True.')
+        if extra_fields.get('is_superuser') is not True:
+            raise ValueError('Superuser must have is_superuser=True.')
+
+        return self._create_user(email, email, password, **extra_fields)
 
 class User(AbstractUser):
     phone = models.CharField(
@@ -29,9 +44,10 @@ class User(AbstractUser):
         default=get_future
     )
 
-    email = models.EmailField('email adress', blank=True, unique=True)
+    email = models.EmailField('email adress', unique=True)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
+    objects = CustomUserManager()
 
     def save(self, *args, **kwargs):
         self.username = self.email

@@ -7,7 +7,7 @@
       <div class="form__errors">
           {% for error in form.not_field_errors %}
             {{error}}
-          {% endif %}
+          {% endfor %}
       </div>
     {% endif %}
     {% for field in form %}
@@ -19,7 +19,7 @@
         <div class="form__errors">
             {% for error in field.errors %}
               {{error}}
-            {% endif %}
+            {% endfor %}
         </div>
       {% endif %}
     {% endfor %}
