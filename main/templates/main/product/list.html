@@ -25,6 +25,9 @@
                 <div class="product__price">
                     {{ product.price|price }}
                 </div>
+                <button data-id="{{ product.id }}" data-ur="" class="product__add">
+                    в корзину срочно
+                </button>
             </a>
         {% endfor %}
     </div>
