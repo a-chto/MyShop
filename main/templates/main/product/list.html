@@ -25,7 +25,7 @@
                 <div class="product__price">
                     {{ product.price|price }}
                 </div>
-                <button data-id="{{ product.id }}" data-ur="" class="product__add">
+                <button data-id="{{ product.id }}" data-url="{% url 'cart:add_to_cart' %}" class="product__add">
                     в корзину срочно
                 </button>
             </a>

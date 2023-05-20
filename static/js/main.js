@@ -1,4 +1,15 @@
 // слайдер изображений товара
+async function postData (urls = '', data={})(
+    const response = await fetch(url, {
+        method: 'POST',
+        credentials : 'same-origin',
+        headers : {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    return await response.json();
+)
 const currentImage = document.querySelector('.gallery__item_current img');
 const galleryItems = document.querySelectorAll('.gallery__preview');
 

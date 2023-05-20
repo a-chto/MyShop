@@ -17,6 +17,9 @@ class Cart(models.Model):
         verbous_name='Сессия',
         on_delete=models.CASCADE
     )
+    @property
+    def count (self):
+        return self.items.count()
 
 class CartItem(models.Model):
     product = models.ForeignKey(
